@@ -53,11 +53,6 @@ $user = mysqli_fetch_assoc($result);
 
       <label>Jam Mulai:</label>
       <select name="start_time" id="start_time">
-        <?php
-          for ($i = 8; $i <= 21; $i++) {
-              echo "<option value='$i:00'>$i:00</option>";
-          }
-        ?>
       </select>
 
       <label>Jam Selesai:</label>

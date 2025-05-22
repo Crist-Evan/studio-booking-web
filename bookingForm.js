@@ -1,6 +1,6 @@
 const startTimeSelect = document.getElementById("start_time");
 const endTimeSelect = document.getElementById("end_time");
-//const bookingDateInput = document.getElementById("booking_date");
+const bookingDateInput = document.getElementById("booking_date");
 
 function generateStartOptions(minHour) {
   startTimeSelect.innerHTML = "";
@@ -25,42 +25,42 @@ function generateEndOptions(startHour) {
 }
 
 // Ubah jam mulai berdasarkan tanggal
-// bookingDateInput.addEventListener("change", function () {
-//   const selectedDate = new Date(this.value);
-//   const today = new Date();
-//   const isToday = selectedDate.toDateString() === today.toDateString();
+bookingDateInput.addEventListener("change", function () {
+  const selectedDate = new Date(this.value);
+  const today = new Date();
+  const isToday = selectedDate.toDateString() === today.toDateString();
 
-//   if (isToday) {
-//     let currentHour = today.getHours() + 1;
+  if (isToday) {
+    let currentHour = today.getHours() + 1;
 
-//     if (currentHour > 21) {
-//       // Sudah terlalu malam, tidak ada jam tersedia
-//       startTimeSelect.innerHTML = "";
-//       let option = document.createElement("option");
-//       option.textContent = "Tidak tersedia";
-//       option.disabled = true;
-//       option.selected = true;
-//       startTimeSelect.appendChild(option);
+    if (currentHour > 21) {
+      // Sudah terlalu malam, tidak ada jam tersedia
+      startTimeSelect.innerHTML = "";
+      let option = document.createElement("option");
+      option.textContent = "Tidak tersedia";
+      option.disabled = true;
+      option.selected = true;
+      startTimeSelect.appendChild(option);
 
-//       endTimeSelect.innerHTML = "";
-//       let endOption = document.createElement("option");
-//       endOption.textContent = "Tidak tersedia";
-//       endOption.disabled = true;
-//       endTimeSelect.appendChild(endOption);
-//       return;
-//     }
-//     generateStartOptions(currentHour);
-//   } else {
-//     generateStartOptions(8);
-//   }
+      endTimeSelect.innerHTML = "";
+      let endOption = document.createElement("option");
+      endOption.textContent = "Tidak tersedia";
+      endOption.disabled = true;
+      endTimeSelect.appendChild(endOption);
+      return;
+    }
+    generateStartOptions(currentHour);
+  } else {
+    generateStartOptions(8);
+  }
 
-//   // Trigger isi jam selesai pertama kali
-//   if (startTimeSelect.options.length > 0) {
-//     startTimeSelect.selectedIndex = 0;
-//     const selectedHour = parseInt(startTimeSelect.value.split(":")[0]);
-//     generateEndOptions(selectedHour);
-//   }
-// });
+  // Trigger isi jam selesai pertama kali
+  if (startTimeSelect.options.length > 0) {
+    startTimeSelect.selectedIndex = 0;
+    const selectedHour = parseInt(startTimeSelect.value.split(":")[0]);
+    generateEndOptions(selectedHour);
+  }
+});
 
 // Ubah jam selesai saat jam mulai diubah
 startTimeSelect.addEventListener("change", function () {
@@ -69,4 +69,4 @@ startTimeSelect.addEventListener("change", function () {
 });
 
 // Inisialisasi awal
-// bookingDateInput.dispatchEvent(new Event("change"));
+bookingDateInput.dispatchEvent(new Event("change"));
