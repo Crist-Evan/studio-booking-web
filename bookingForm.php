@@ -26,7 +26,7 @@ $user = mysqli_fetch_assoc($result);
     <title>Bookking</title>
   </head>
   <body>
-    <form action="" method="post">
+    <form action="bookingProcess.php" method="post">
       <!-- USER -->
       <label>Nama:</label>
       <input type="text" name="name" value="<?= $user['name'] ?>" readonly><br><br>
@@ -56,7 +56,7 @@ $user = mysqli_fetch_assoc($result);
       </select>
 
       <label>Jam Selesai:</label>
-      <select id="end_time" name="end_time">
+      <select name="end_time" id="end_time">
       </select><br /><br />
 
       <input type="submit" value="Book!" />

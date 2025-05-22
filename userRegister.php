@@ -2,11 +2,11 @@
 include 'connection.php'; // file koneksi ke database
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username     = $_POST['username'];
-    $useremail    = $_POST['useremail'];
+    $username = $_POST['username'];
+    $useremail = $_POST['useremail'];
     $userphonenumber = $_POST['userphonenumber'];
     $userpass = $_POST['userpass'];
-    $userrole     = 'client'; // default role
+    $userrole = 'client'; // default role
 
     // Enkripsi password
     $hashed_password = password_hash($userpass, PASSWORD_DEFAULT);
