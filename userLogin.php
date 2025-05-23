@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "Login berhasil. Selamat datang " . $user['name'];
         echo "<br><a href='bookingForm.php'>Booking Now!</a>";
+        echo "<br><a href='userHistory.php'>Check Your History!</a>";
         // redirect ke halaman dashboard
     } else {
         echo "Email atau password salah!";
