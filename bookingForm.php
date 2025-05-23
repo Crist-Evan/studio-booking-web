@@ -42,14 +42,16 @@ $user = mysqli_fetch_assoc($result);
       <select name="studio" id="studio" required>
         <option value="">-- Pilih Studio --</option>
         <?php while ($studio = mysqli_fetch_assoc($studio_result)): ?>
-          <option value="<?= $studio['price_per_hour'] ?>"><?= $studio['name'] ?></option>
+          <option value="<?= $studio['id'] ?>" data-price="<?= $studio['price_per_hour'] ?>">
+            <?= $studio['name'] ?>
+          </option>
         <?php endwhile; ?>
       </select>
       <br><br>
 
       <!-- TIME -->
       <label for="booking_date">Tanggal Booking:</label>
-      <input type="date" id="booking_date" name="booking_date" min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>" required><br><br>
+      <input type="date" id="booking_date" name="booking_date" min="<?= date('Y-m-d') ?>" required><br><br>
 
       <label>Jam Mulai:</label>
       <select name="start_time" id="start_time">
@@ -59,11 +61,11 @@ $user = mysqli_fetch_assoc($result);
       <select name="end_time" id="end_time">
       </select><br /><br />
 
-      <input type="submit" value="Book!" />
-
       <!-- RESULT -->
-      <h3>Total: </h3>
-
+      <h3 id="totalText">Total: Rp0</h3>
+      
+      <input type="submit" value="Book!" />
+      
       <!-- Javascript -->
       <script src="bookingForm.js"></script>
     </form>
