@@ -2,7 +2,7 @@
 const bookingDateInput = document.getElementById("booking_date");
 const startTimeInput = document.getElementById("start_time");
 const endTimeInput = document.getElementById("end_time");
-const studioSelect = document.getElementById("studio");
+const studioSelect = document.getElementById("studio_id");
 const totalText = document.getElementById("totalText");
 
 // Fungsi untuk mendapatkan jam yang sudah dibooking

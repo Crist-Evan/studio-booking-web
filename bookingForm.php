@@ -28,6 +28,9 @@ $user = mysqli_fetch_assoc($result);
   <body>
     <form action="bookingProcess.php" method="post">
       <!-- USER -->
+
+      <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+
       <label>Nama:</label>
       <input type="text" name="name" value="<?= $user['name'] ?>" readonly><br><br>
 
@@ -39,7 +42,7 @@ $user = mysqli_fetch_assoc($result);
 
       <!-- STUDIO -->
       <label>Pilih Studio:</label>
-      <select name="studio" id="studio" required>
+      <select name="studio_id" id="studio_id" required>
         <option value="">-- Pilih Studio --</option>
         <?php while ($studio = mysqli_fetch_assoc($studio_result)): ?>
           <option value="<?= $studio['id'] ?>" data-price="<?= $studio['price_per_hour'] ?>">
