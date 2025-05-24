@@ -21,6 +21,7 @@
         <th>start time</th>
         <th>end time</th>
         <th>status</th>
+        <th>action</th>
       </tr>
       <?php while ($user = mysqli_fetch_assoc($result)): ?>
         <tr>
@@ -28,6 +29,7 @@
           <td><?= $user['start_time'] ?></td>
           <td><?= $user['end_time'] ?></td>
           <td><?= $user['status'] ?></td>
+          <td><a href="#">details</a></td>
         </tr>
       <?php endwhile; ?>
     </table>
