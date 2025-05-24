@@ -43,7 +43,7 @@ $user = mysqli_fetch_assoc($result);
       <!-- STUDIO -->
       <label>Pilih Studio:</label>
       <select name="studio_id" id="studio_id" required>
-        <option value="">-- Pilih Studio --</option>
+        <option value="" selected disabled>Studio</option>
         <?php while ($studio = mysqli_fetch_assoc($studio_result)): ?>
           <option value="<?= $studio['id'] ?>" data-price="<?= $studio['price_per_hour'] ?>">
             <?= $studio['name'] ?>
