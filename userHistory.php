@@ -29,7 +29,7 @@
           <td><?= $user['start_time'] ?></td>
           <td><?= $user['end_time'] ?></td>
           <td><?= $user['status'] ?></td>
-          <td><a href="#">details</a></td>
+          <td><a href="userPayment.php?booking_id=<?= $user['id'] ?>">details</a></td>
         </tr>
       <?php endwhile; ?>
     </table>
