@@ -1,120 +1,173 @@
-// Ambil elemen
-const bookingDateInput = document.getElementById("booking_date");
-const startTimeInput = document.getElementById("start_time");
-const endTimeInput = document.getElementById("end_time");
+let studioSchedule = {};
+let bookedHours = [];
 const studioSelect = document.getElementById("studio_id");
-const totalText = document.getElementById("totalText");
+const bookingDateInput = document.getElementById("booking_date");
+const startTimeSelect = document.getElementById("start_time");
+const endTimeSelect = document.getElementById("end_time");
+const totalInput = document.getElementById("total"); // untuk tampilkan total
+const totalHidden = document.getElementById("total_hidden"); // jika ingin kirim ke backend
 
-// Fungsi untuk mendapatkan jam yang sudah dibooking
-async function fetchBookedTimes(date, studioId) {
-  const res = await fetch(`getBookedSlots.php?date=${date}&studio=${studioId}`);
-  const bookedSlots = await res.json();
-  return bookedSlots; // Format: [{start_time: "13:00", end_time: "15:00"}, ...]
-}
+const dayMap = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
-// Fungsi untuk mengecek apakah jam tertentu ada di rentang waktu booking
-function isTimeBooked(time, bookedSlots) {
-  return bookedSlots.some((slot) => {
-    const slotStart = slot.start_time.slice(0, 5);
-    const slotEnd = slot.end_time.slice(0, 5);
-    return time >= slotStart && time < slotEnd;
+// Saat studio dipilih
+studioSelect.addEventListener("change", async function () {
+  const studioId = this.value;
+  if (!studioId) return;
+
+  // Reset semua field terkait
+  bookingDateInput.value = "";
+  startTimeSelect.innerHTML = "";
+  endTimeSelect.innerHTML = "";
+  totalInput.value = "";
+  if (totalHidden) totalHidden.value = "";
+
+  // Ambil data jadwal studio
+  const res = await fetch(`getStudioSchedule.php?studio_id=${studioId}`);
+  studioSchedule = await res.json();
+
+  // Dapatkan hari buka dari data
+  const allowedDays = Object.keys(studioSchedule).map((day) =>
+    dayMap.indexOf(day)
+  );
+
+  // Set flatpickr ulang agar sesuai jadwal studio yang baru
+  if (window.flatpickrInstance) window.flatpickrInstance.destroy();
+  window.flatpickrInstance = flatpickr(bookingDateInput, {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    disable: [
+      function (date) {
+        return !allowedDays.includes(date.getDay());
+      },
+    ],
   });
-}
+});
 
-// Fungsi untuk generate opsi jam mulai
-function generateStartOptions(minHour, bookedSlots) {
-  startTimeInput.innerHTML = "";
-  for (let hour = minHour; hour <= 21; hour++) {
-    const time = `${hour.toString().padStart(2, "0")}:00`;
-    if (!isTimeBooked(time, bookedSlots)) {
-      const option = document.createElement("option");
-      option.value = time;
-      option.textContent = time;
-      startTimeInput.appendChild(option);
+// Saat tanggal dipilih
+bookingDateInput.addEventListener("change", async function () {
+  const selectedDate = this.value;
+  const studioId = studioSelect.value;
+  if (!selectedDate || !studioId) return;
+
+  const dayName = dayMap[new Date(selectedDate).getDay()];
+  const scheduleToday = studioSchedule[dayName] || [];
+
+  const bookedRes = await fetch(
+    `getBookedSlots.php?date=${selectedDate}&studio_id=${studioId}`
+  );
+  const bookedSlots = await bookedRes.json();
+
+  // Ekstrak semua jam yang sudah dipesan dari setiap slot
+  bookedHours = [];
+
+  bookedSlots.forEach((slot) => {
+    const start = parseInt(slot.start_time.split(":")[0]);
+    const end = parseInt(slot.end_time.split(":")[0]);
+
+    for (let h = start; h < end; h++) {
+      bookedHours.push(h);
+    }
+  });
+
+  // Generate jam mulai
+  startTimeSelect.innerHTML = "";
+  scheduleToday.forEach((range) => {
+    const startHour = parseInt(range.open.split(":")[0]);
+    const endHour = parseInt(range.close.split(":")[0]);
+    for (let h = startHour; h < endHour; h++) {
+      if (!bookedHours.includes(h)) {
+        const opt = document.createElement("option");
+        opt.value = `${h.toString().padStart(2, "0")}:00`;
+        opt.textContent = opt.value;
+        startTimeSelect.appendChild(opt);
+      }
+    }
+  });
+
+  endTimeSelect.innerHTML = "";
+  totalInput.value = "";
+  if (totalHidden) totalHidden.value = "";
+
+  if (startTimeSelect.options.length > 0) {
+    startTimeSelect.selectedIndex = 0; // pilih otomatis opsi pertama
+    const event = new Event("change"); // picu event change
+    startTimeSelect.dispatchEvent(event);
+  }
+});
+
+// Saat jam mulai dipilih
+startTimeSelect.addEventListener("change", function () {
+  const startHour = parseInt(this.value.split(":")[0]);
+  const selectedDate = bookingDateInput.value;
+  const dayName = dayMap[new Date(selectedDate).getDay()];
+  const scheduleToday = studioSchedule[dayName] || [];
+
+  endTimeSelect.innerHTML = "";
+
+  // Temukan rentang jadwal yang cocok dengan startHour
+  let matchedRange = null;
+  for (let range of scheduleToday) {
+    const rangeStart = parseInt(range.open.split(":")[0]);
+    const rangeEnd = parseInt(range.close.split(":")[0]);
+
+    if (startHour >= rangeStart && startHour < rangeEnd) {
+      matchedRange = { start: rangeStart, end: rangeEnd };
+      break;
     }
   }
-  generateEndOptions(); // Update end options setelah start options di-generate
-}
 
-// Fungsi untuk generate opsi jam selesai
-function generateEndOptions() {
-  const startTime = startTimeInput.value;
-  const [startHour] = startTime.split(":");
-  endTimeInput.innerHTML = "";
-  for (let hour = parseInt(startHour) + 1; hour <= 22; hour++) {
-    const time = `${hour.toString().padStart(2, "0")}:00`;
-    const option = document.createElement("option");
-    option.value = time;
-    option.textContent = time;
-    endTimeInput.appendChild(option);
-  }
-  updateTotal();
-}
+  if (!matchedRange) return;
 
-// Fungsi untuk update total harga
-function updateTotal() {
-  const startTime = startTimeInput.value;
-  const endTime = endTimeInput.value;
-  const studioOption = studioSelect.options[studioSelect.selectedIndex];
-  const pricePerHour = parseInt(studioOption.dataset.price);
+  // Isi jam akhir hanya dalam rentang yang cocok
+  for (let h = startHour + 1; h <= matchedRange.end; h++) {
+    // Cek apakah ada konflik di rentang jam start → h
+    let conflict = false;
+    for (let b = startHour; b < h; b++) {
+      if (bookedHours.includes(b)) {
+        conflict = true;
+        break;
+      }
+    }
 
-  if (!startTime || !endTime || isNaN(pricePerHour)) {
-    totalText.textContent = "Total: Rp0";
-    return;
+    if (conflict) break;
+
+    const opt = document.createElement("option");
+    opt.value = `${h.toString().padStart(2, "0")}:00`;
+    opt.textContent = opt.value;
+    endTimeSelect.appendChild(opt);
   }
 
-  const startHour = parseInt(startTime.split(":")[0]);
-  const endHour = parseInt(endTime.split(":")[0]);
-  const duration = endHour - startHour;
-
-  if (duration > 0) {
-    const total = duration * pricePerHour;
-    totalText.textContent = `Total: Rp${total.toLocaleString("id-ID")}`;
-  } else {
-    totalText.textContent = "Total: Rp0";
-  }
-}
-
-// Event listener saat tanggal berubah
-bookingDateInput.addEventListener("change", async function () {
-  const selectedDate = this.value;
-  const selectedStudio = studioSelect.value;
-
-  if (!selectedDate || !selectedStudio) return;
-
-  const today = new Date().toISOString().split("T")[0];
-  const bookedSlots = await fetchBookedTimes(selectedDate, selectedStudio);
-
-  if (selectedDate === today) {
-    const currentHour = new Date().getHours();
-    generateStartOptions(currentHour + 1, bookedSlots);
-  } else {
-    generateStartOptions(8, bookedSlots);
+  // Hitung total kalau jam akhir sudah langsung auto-pilih
+  if (endTimeSelect.options.length > 0) {
+    endTimeSelect.selectedIndex = 0;
+    hitungTotal();
   }
 });
 
-// Event listener saat studio berubah
-bookingDateInput.addEventListener("change", async function () {
-  const selectedDate = this.value;
-  const selectedStudio = studioSelect.value;
+// Saat jam akhir dipilih
+endTimeSelect.addEventListener("change", hitungTotal);
 
-  const today = new Date().toISOString().split("T")[0];
-  const bookedSlots = await fetchBookedTimes(selectedDate, selectedStudio);
+// Fungsi total harga
+function hitungTotal() {
+  const start = startTimeSelect.value;
+  const end = endTimeSelect.value;
+  const selectedOption = studioSelect.options[studioSelect.selectedIndex];
+  const pricePerHour = parseFloat(selectedOption.getAttribute("data-price"));
 
-  if (selectedDate === today) {
-    const currentHour = new Date().getHours();
-    generateStartOptions(currentHour + 1, bookedSlots);
-  } else {
-    generateStartOptions(8, bookedSlots);
+  if (start && end && !isNaN(pricePerHour)) {
+    const durasi = parseInt(end.split(":")[0]) - parseInt(start.split(":")[0]);
+    if (durasi > 0) {
+      const total = durasi * pricePerHour;
+      totalInput.value = `Rp ${total.toLocaleString("id-ID")}`;
+      if (totalHidden) totalHidden.value = total;
+    }
   }
-});
-
-// Event listener untuk update jam selesai dan total saat jam mulai dipilih
-startTimeInput.addEventListener("change", function () {
-  generateEndOptions();
-  updateTotal();
-});
-
-// Update total harga ketika elemen berubah
-studioSelect.addEventListener("change", updateTotal);
-endTimeInput.addEventListener("change", updateTotal);
+}

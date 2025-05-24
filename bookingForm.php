@@ -65,7 +65,9 @@ $user = mysqli_fetch_assoc($result);
       </select><br /><br />
 
       <!-- RESULT -->
-      <h3 id="totalText">Total: Rp0</h3>
+      <label>Total Biaya:</label>
+      <input type="text" id="total" readonly>
+      <input type="hidden" id="total_hidden" name="total">
       
       <input type="submit" value="Book!" />
       

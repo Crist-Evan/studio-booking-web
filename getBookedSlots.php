@@ -3,7 +3,7 @@ include 'connection.php'; // sesuaikan dengan file koneksi kamu
 
 // Tangkap data dari parameter GET
 $date = $_GET['date'];
-$studioId = intval($_GET['studio']); // sebaiknya kirim ID, bukan harga
+$studioId = intval($_GET['studio_id']); // sebaiknya kirim ID, bukan harga
 
 // Cek input aman
 if (!$date || !$studioId) {
