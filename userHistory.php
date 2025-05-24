@@ -23,13 +23,13 @@
         <th>status</th>
         <th>action</th>
       </tr>
-      <?php while ($user = mysqli_fetch_assoc($result)): ?>
+      <?php while ($booking = mysqli_fetch_assoc($result)): ?>
         <tr>
-          <td><?= $user['booking_date'] ?></td>
-          <td><?= $user['start_time'] ?></td>
-          <td><?= $user['end_time'] ?></td>
-          <td><?= $user['status'] ?></td>
-          <td><a href="userPayment.php?booking_id=<?= $user['id'] ?>">details</a></td>
+          <td><?= $booking['booking_date'] ?></td>
+          <td><?= $booking['start_time'] ?></td>
+          <td><?= $booking['end_time'] ?></td>
+          <td><?= $booking['status'] ?></td>
+          <td><a href="userPayment.php?booking_id=<?= $booking['id'] ?>">details</a></td>
         </tr>
       <?php endwhile; ?>
     </table>
