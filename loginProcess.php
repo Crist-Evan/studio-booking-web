@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: userDashboard.php");
             exit;
         } else {
-            header("Location: adminDashboard.php");
+            header("Location: admin/adminDashboard.php");
             exit;
         }
     } else {
