@@ -39,6 +39,9 @@
             <td><?= $booking['end_time'] ?></td>
             <td><?= $booking['status'] ?></td>
             <td><?= $booking['created_at'] ?></td>
+            <td>
+                <a href="editBooking.php?booking_id=<?= $booking['id'] ?>">edit</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </table>
