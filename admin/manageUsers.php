@@ -2,7 +2,7 @@
     session_start();
     include '../connection.php';
     if ($_SESSION['role'] !== 'admin') {
-    header("Location: /index.html");
+    header("Location: ../index.html");
     exit;
     }
     $query = "SELECT * FROM users";
@@ -37,6 +37,10 @@
             <td><?= $user['password'] ?></td>
             <td><?= $user['role'] ?></td>
             <td><?= $user['created_at'] ?></td>
+            <td>
+                <a href="editUser.php?user_id=<?= $user['id'] ?>">edit</a>
+                <a href="deleteUser.php?user_id=<?= $user['id'] ?>" onclick="return confirm('Yakin?')">delete</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </table>
