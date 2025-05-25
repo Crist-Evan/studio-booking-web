@@ -17,11 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['useremail'] = $user['email'];
         $_SESSION['userphonenumber'] = $user['number_phone'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['message'] = "Login berhasil. Selamat datang " . $user['name'];
 
-        echo "Login berhasil. Selamat datang " . $user['name'];
-        echo "<br><a href='bookingForm.php'>Booking Now!</a>";
-        echo "<br><a href='userHistory.php'>Check Your History!</a>";
-        // redirect ke halaman dashboard
+        header("Location: userDashboard.php");
+        exit;
     } else {
         echo "Email atau password salah!";
         echo "<br>Name: $username<br>";
