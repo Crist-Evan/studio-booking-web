@@ -17,6 +17,7 @@
     <title>Manage Studio</title>
 </head>
 <body>
+    <a href="addStudio.php">Add!</a>
     <table border="1">
         <tr>
             <th>id</th>
@@ -37,6 +38,10 @@
             <td><?= $studio['price_per_hour'] ?></td>
             <td><?= $studio['is_available'] ?></td>
             <td><?= $studio['created_at'] ?></td>
+            <td>
+                <a href="editStudio.php?<?= $studio['id'] ?>">Edit</a>
+                <a href="deleteStudio.php?<?= $studio['id'] ?>">Delete</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </table>
