@@ -2,7 +2,7 @@
 session_start();
 include 'connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
 
@@ -19,8 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $user['role'];
         $_SESSION['message'] = "Login berhasil. Selamat datang " . $user['name'];
 
-        header("Location: userDashboard.php");
-        exit;
+        if ($_SESSION['role'] !== 'admin') {
+            header("Location: userDashboard.php");
+            exit;
+        } else {
+            header("Location: adminDashboard.php");
+            exit;
+        }
     } else {
         echo "Email atau password salah!";
         echo "<br>Name: $username<br>";
