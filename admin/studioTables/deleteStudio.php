@@ -1,5 +1,5 @@
 <?php
-    include '../connection.php';
+    include '../../connection.php';
     $studio_id = $_GET['studio_id'];
 
     $query = "DELETE FROM studios WHERE id = ?";

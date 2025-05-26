@@ -14,9 +14,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <a href="manageUsers.php">manage users</a>
-    <a href="manageStudios.php">manage studios</a>
-    <a href="manageBookings.php">manage bookings</a>
-    <a href="managePayments.php">manage payments</a>
+    <a href="userTables/manageUsers.php">manage users</a>
+    <a href="studioTables/manageStudios.php">manage studios</a>
+    <a href="bookingTables/manageBookings.php">manage bookings</a>
+    <a href="paymentTables/managePayments.php">manage payments</a>
 </body>
 </html>

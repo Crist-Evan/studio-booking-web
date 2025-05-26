@@ -1,5 +1,5 @@
 <?php
-    include '../connection.php';
+    include '../../connection.php';
     $booking_id = $_GET['booking_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

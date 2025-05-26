@@ -1,5 +1,5 @@
 <?php
-    include '../connection.php';
+    include '../../connection.php';
     $payment_id = $_GET['payment_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

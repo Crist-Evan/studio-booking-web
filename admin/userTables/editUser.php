@@ -1,5 +1,5 @@
 <?php
-    include '../connection.php';
+    include '../../connection.php';
     $user_id = $_GET['user_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
