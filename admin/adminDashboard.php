@@ -17,5 +17,6 @@
     <a href="manageUsers.php">manage users</a>
     <a href="manageStudios.php">manage studios</a>
     <a href="manageBookings.php">manage bookings</a>
+    <a href="managePayments.php">manage payments</a>
 </body>
 </html>
