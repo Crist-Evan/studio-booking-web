@@ -16,6 +16,7 @@
 <body>
     <a href="userTables/manageUsers.php">manage users</a>
     <a href="studioTables/manageStudios.php">manage studios</a>
+    <a href="studioScheduleTables/manageStudioSchedules.php">manage studios</a>
     <a href="bookingTables/manageBookings.php">manage bookings</a>
     <a href="paymentTables/managePayments.php">manage payments</a>
 </body>

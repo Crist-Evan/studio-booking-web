@@ -2,7 +2,7 @@
     session_start();
     include '../../connection.php';
     if ($_SESSION['role'] !== 'admin') {
-    header("Location: ../index.html");
+    header("Location: ../../index.html");
     exit;
     }
     $query = "SELECT * FROM studios";
@@ -40,7 +40,8 @@
             <td><?= $studio['created_at'] ?></td>
             <td>
                 <a href="editStudio.php?studio_id=<?= $studio['id'] ?>">Edit</a>
-                <a href="deleteStudio.php?studio_id=<?= $studio['id'] ?>" onclick="return confirm('Yakin?')">Delete</a>
+                <a href="deleteStudio.php?studio_id=<?= $studio['id'] ?>" onclick="return confirm('Yakin?')">Delete</a><br>
+                <a href="../studioScheduleTables/addStudioSchedule.php?studio_id=<?= $studio['id'] ?>">Add Schedule</a>
             </td>
         </tr>
         <?php endwhile; ?>
