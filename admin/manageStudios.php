@@ -39,8 +39,8 @@
             <td><?= $studio['is_available'] ?></td>
             <td><?= $studio['created_at'] ?></td>
             <td>
-                <a href="editStudio.php?<?= $studio['id'] ?>">Edit</a>
-                <a href="deleteStudio.php?<?= $studio['id'] ?>">Delete</a>
+                <a href="editStudio.php?studio_id=<?= $studio['id'] ?>">Edit</a>
+                <a href="deleteStudio.php?studio_id=<?= $studio['id'] ?>" onclick="return confirm('Yakin?')">Delete</a>
             </td>
         </tr>
         <?php endwhile; ?>
