@@ -3,7 +3,8 @@ include 'connection.php'; // sesuaikan dengan file koneksi kamu
 
 // Tangkap data dari parameter GET
 $date = $_GET['date'];
-$studioId = intval($_GET['studio_id']); // sebaiknya kirim ID, bukan harga
+$studioId = intval($_GET['studio_id']);
+$status = 'cancelled';
 
 // Cek input aman
 if (!$date || !$studioId) {
@@ -13,14 +14,14 @@ if (!$date || !$studioId) {
 }
 
 // Ambil data booking dari database
-$query = "SELECT start_time, end_time FROM bookings WHERE booking_date = ? AND studio_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("si", $date, $studioId);
-$stmt->execute();
-$result = $stmt->get_result();
+$query = "SELECT start_time, end_time FROM bookings WHERE booking_date = ? AND studio_id = ? AND status != ?";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "sis", $date, $studioId, $status);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
 $booked = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = mysqli_fetch_assoc($result)) {
     $booked[] = $row;
 }
 
