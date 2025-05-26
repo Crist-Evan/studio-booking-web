@@ -15,15 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query = "INSERT INTO users (name, email, number_phone, password, role) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, 'sssss', $username, $useremail, $userphonenumber, $hashed_password, $userrole);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        echo "Registrasi berhasil!";
+        echo "Register berhasil";
         header("Location: index.html");
         exit;
     } else {
-        echo "Gagal: " . mysqli_error($conn);
+        echo "Register gagal: " . mysqli_error($conn);
     }
 }
 ?>
