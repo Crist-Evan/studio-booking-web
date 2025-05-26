@@ -35,10 +35,10 @@
 <body>
     <form method="post">
         <label for="amount">Amount: </label>
-        <input type="number" name="amount" step="0.01" required><br /><br />
+        <input type="number" name="amount" step="0.01" value="<?= $payment['amount'] ?>" required><br /><br />
         <label for="method">Method: </label>
-        <input type="text" name="method" required><br /><br />
-        <label for="status">Available?: </label>
+        <input type="text" name="method" value="<?= $payment['method'] ?>" required><br /><br />
+        <label for="status">Status: </label>
         <select name="status" required>
             <option value="unpaid" <?= $payment['status'] == 'unpaid' ? 'selected' : '' ?>>Unpaid</option>
             <option value="paid" <?= $payment['status'] == 'paid' ? 'selected' : '' ?>>Paid</option>
