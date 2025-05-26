@@ -1,7 +1,7 @@
 <?php
 include 'connection.php'; // file koneksi ke database
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $useremail = $_POST['useremail'];
     $userphonenumber = $_POST['userphonenumber'];
@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result) {
         echo "Registrasi berhasil!";
-        echo "<a href='index.html'>Login Skrg!</a>";
+        header("Location: index.html");
+        exit;
     } else {
         echo "Gagal: " . mysqli_error($conn);
     }
