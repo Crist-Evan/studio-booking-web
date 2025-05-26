@@ -12,8 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashed_password = password_hash($userpass, PASSWORD_DEFAULT);
 
     // Simpan ke database
-    $query = "INSERT INTO users (name, email, number_phone, password, role) VALUES ('$username', '$useremail', '$userphonenumber', '$hashed_password', '$userrole')";
-    $result = mysqli_query($conn, $query);
+    $query = "INSERT INTO users (name, email, number_phone, password, role) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, 'sssss', $username, $useremail, $userphonenumber, $hashed_password, $userrole);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if ($result) {
         echo "Registrasi berhasil!";

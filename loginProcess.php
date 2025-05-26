@@ -6,8 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
 
-    $query = "SELECT * FROM users WHERE name = '$username'";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT * FROM users WHERE name = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, 's', $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
 
     if ($userpass === $user['password'] or $user && password_verify($userpass, $user['password'])){
