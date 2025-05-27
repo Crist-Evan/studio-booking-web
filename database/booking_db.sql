@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 21, 2025 at 02:40 PM
+-- Generation Time: May 27, 2025 at 02:36 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -72,6 +72,20 @@ CREATE TABLE `studios` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `studio_schedules`
+--
+
+CREATE TABLE `studio_schedules` (
+  `id` int NOT NULL,
+  `studio_id` int NOT NULL,
+  `day_of_week` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') NOT NULL,
+  `open_time` time NOT NULL,
+  `close_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -111,6 +125,13 @@ ALTER TABLE `studios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `studio_schedules`
+--
+ALTER TABLE `studio_schedules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studio_id` (`studio_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -142,6 +163,12 @@ ALTER TABLE `studios`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `studio_schedules`
+--
+ALTER TABLE `studio_schedules`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -163,6 +190,12 @@ ALTER TABLE `bookings`
 --
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`);
+
+--
+-- Constraints for table `studio_schedules`
+--
+ALTER TABLE `studio_schedules`
+  ADD CONSTRAINT `studio_schedules_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
