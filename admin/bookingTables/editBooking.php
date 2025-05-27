@@ -10,7 +10,7 @@
 
         $query = "UPDATE bookings SET booking_date = ?, start_time = ?, end_time = ?, status = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, 'ssssi', $newBookingDate, $newStartTime, $newEndTime, $status, $booking_id);
+        mysqli_stmt_bind_param($stmt, 'ssssi', $newBookingDate, $newStartTime, $newEndTime, $newStatus, $booking_id);
         mysqli_stmt_execute($stmt);
 
         header("Location: manageBookings.php");
