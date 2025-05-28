@@ -29,7 +29,7 @@
         <h3 class="card-title">Booking History</h3>
       </div>
       <div class="card-body">
-        <table class="table table-bordered table-striped align-middle">
+        <table class="table table-bordered table-hover align-middle">
           <thead class="table-dark">
             <tr>
               <th>Booking Date</th>

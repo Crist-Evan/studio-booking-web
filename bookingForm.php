@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php'; // pastikan ini koneksi ke database
+include 'connection.php';
 
 $studio_query = "SELECT * FROM studios WHERE is_available = 1";
 $studio_result = mysqli_query($conn, $studio_query);
@@ -20,59 +20,97 @@ $user = mysqli_fetch_assoc($result);
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookking</title>
-  </head>
-  <body>
-    <form action="bookingProcess.php" method="post">
-      <!-- USER -->
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+  <!-- Fonts & AdminLTE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="adminlte.css" />
+</head>
+<body class="layout-fixed bg-body-tertiary">
 
-      <label>Nama:</label>
-      <input type="text" name="name" value="<?= $user['name'] ?>" readonly><br><br>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title">Booking Form</h3>
+        </div>
 
-      <label>Email:</label>
-      <input type="email" name="email" value="<?= $user['email'] ?>" readonly><br><br>
+        <form action="bookingProcess.php" method="POST">
+          <div class="card-body">
 
-      <label>No. HP:</label>
-      <input type="text" name="phone" value="<?= $user['number_phone'] ?>" readonly><br><br>
+            <!-- Identitas Pengguna -->
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" readonly>
+            </div>
 
-      <!-- STUDIO -->
-      <label>Pilih Studio:</label>
-      <select name="studio_id" id="studio_id" required>
-        <option value="" selected disabled>Studio</option>
-        <?php while ($studio = mysqli_fetch_assoc($studio_result)): ?>
-          <option value="<?= $studio['id'] ?>" data-price="<?= $studio['price_per_hour'] ?>">
-            <?= $studio['name'] ?>
-          </option>
-        <?php endwhile; ?>
-      </select>
-      <br><br>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
+            </div>
 
-      <!-- TIME -->
-      <label for="booking_date">Tanggal Booking:</label>
-      <input type="date" id="booking_date" name="booking_date" min="<?= date('Y-m-d') ?>" required><br><br>
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?= htmlspecialchars($user['number_phone']) ?>" readonly>
+            </div>
 
-      <label>Jam Mulai:</label>
-      <select name="start_time" id="start_time">
-      </select>
+            <!-- Studio -->
+            <div class="mb-3">
+              <label for="studio_id" class="form-label">Select Studio</label>
+              <select name="studio_id" id="studio_id" class="form-select" required>
+                <option value="" selected disabled>Studio</option>
+                <?php while ($studio = mysqli_fetch_assoc($studio_result)): ?>
+                  <option value="<?= $studio['id'] ?>" data-price="<?= $studio['price_per_hour'] ?>">
+                    <?= $studio['name'] ?>
+                  </option>
+                <?php endwhile; ?>
+              </select>
+            </div>
 
-      <label>Jam Selesai:</label>
-      <select name="end_time" id="end_time">
-      </select><br /><br />
+            <!-- Tanggal & Waktu -->
+            <div class="mb-3">
+              <label for="booking_date" class="form-label">Booking Date</label>
+              <input type="date" name="booking_date" id="booking_date" class="form-control" min="<?= date('Y-m-d') ?>" required>
+            </div>
 
-      <!-- RESULT -->
-      <label>Total Biaya:</label>
-      <input type="text" id="total" readonly>
-      <input type="hidden" id="total_hidden" name="total">
-      
-      <input type="submit" value="Book!" />
-      
-      <!-- Javascript -->
-      <script src="bookingForm.js"></script>
-    </form>
-  </body>
+            <div class="mb-3">
+              <label for="start_time" class="form-label">Start Time</label>
+              <select name="start_time" id="start_time" class="form-control" required></select>
+            </div>
+
+            <div class="mb-3">
+              <label for="end_time" class="form-label">End Time</label>
+              <select name="end_time" id="end_time" class="form-control" required></select>
+            </div>
+
+            <!-- Result / Total -->
+            <div class="mb-3">
+              <label class="form-label">Total</label>
+              <input type="text" class="form-control" id="total" readonly placeholder="Result will appear here...">
+	            <input type="hidden" id="total_hidden" name="total">
+            </div>
+
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Book Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="adminlte.js"></script>
+<script src="bookingForm.js"></script>
+</body>
 </html>
