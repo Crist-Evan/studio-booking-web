@@ -53,6 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       ><input type="password" name="userpass" id="userpass" /><br /><br />
       <input type="submit" value="Login" />
     </form>
-    <br /><br /><a href="register.html">Register Here!</a>
+    <br /><br /><a href="register.php">Register Here!</a>
   </body>
 </html>
