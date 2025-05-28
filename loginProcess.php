@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Login berhasil. Selamat datang " . $user['name'];
 
         if ($_SESSION['role'] !== 'admin') {
-            header("Location: userDashboard.php");
+            header("Location: user/userDashboard.php");
             exit;
         } else {
             header("Location: admin/adminDashboard.php");

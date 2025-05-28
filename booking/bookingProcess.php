@@ -25,7 +25,7 @@ if ($booking_success) {
 
     if ($payment_success) {
         echo "✅ Berhasil! Data booking & pembayaran ditambahkan ke database!";
-        header("Location: userPayment.php?booking_id=$booking_id");
+        header("Location: ../user/userPayment.php?booking_id=$booking_id");
         exit;
     } else {
         echo "❌ Gagal menyimpan data pembayaran.";
