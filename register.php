@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <!-- END: Form -->
 
           <p class="mb-0 mt-3">
-            <a href="index.html" class="text-center">Login Here!</a>
+            <a href="login.php" class="text-center">Login Here!</a>
           </p>
         </div>
       </div>
