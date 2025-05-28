@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include '../connection.php';
 
 if (isset($_GET['studio_id'])) {
     $studio_id = $_GET['studio_id'];
