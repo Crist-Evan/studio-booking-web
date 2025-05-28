@@ -7,7 +7,7 @@ $studio_result = mysqli_query($conn, $studio_query);
 
 // Pastikan user sudah login
 if (!isset($_SESSION['user_id'])) {
-  header("Location: ../index.html");
+  header("Location: ../login.php");
   exit;
 }
 
