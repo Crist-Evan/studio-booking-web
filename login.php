@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <!-- END: Your form -->
 
           <p class="mb-0 mt-3">
-            <a href="register.html" class="text-center">Register Here!</a>
+            <a href="register.php" class="text-center">Register Here!</a>
           </p>
         </div>
       </div>

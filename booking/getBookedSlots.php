@@ -1,5 +1,5 @@
 <?php
-include 'connection.php'; // sesuaikan dengan file koneksi kamu
+include '../connection.php'; // sesuaikan dengan file koneksi kamu
 
 // Tangkap data dari parameter GET
 $date = $_GET['date'];

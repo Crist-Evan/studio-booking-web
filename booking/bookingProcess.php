@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include '../connection.php';
 
 $user_id = $_POST['user_id'];
 $studio_id = $_POST['studio_id'];
