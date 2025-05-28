@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include '../connection.php'; // pastikan ini koneksi ke database
 
 $studio_query = "SELECT * FROM studios WHERE is_available = 1";
 $studio_result = mysqli_query($conn, $studio_query);

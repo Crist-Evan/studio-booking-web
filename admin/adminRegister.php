@@ -16,7 +16,7 @@
 
     if ($result) {
         echo "Registrasi berhasil!";
-        header("Location: index.html");
+        header("Location: ../index.html");
         exit;
     } else {
         echo "Gagal: " . mysqli_error($conn);

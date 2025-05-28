@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include 'connection.php';
+  include '../connection.php';
 
   $user_id = $_SESSION['user_id'];
   $query = "SELECT * FROM bookings WHERE user_id = $user_id";

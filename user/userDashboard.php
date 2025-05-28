@@ -12,7 +12,7 @@
 <body>
     <?php
         echo $_SESSION['message'];
-        echo "<br><a href='bookingForm.php'>Booking Now!</a>";
+        echo "<br><a href='../booking/bookingForm.php'>Booking Now!</a>";
         echo "<br><a href='userHistory.php'>Check Your History!</a>";
     ?>
 </body>
