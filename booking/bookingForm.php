@@ -7,7 +7,7 @@ $studio_result = mysqli_query($conn, $studio_query);
 
 // Pastikan user sudah login
 if (!isset($_SESSION['user_id'])) {
-  header("Location: index.html");
+  header("Location: ../index.html");
   exit;
 }
 
@@ -29,7 +29,7 @@ $user = mysqli_fetch_assoc($result);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
-  <link rel="stylesheet" href="adminlte.css" />
+  <link rel="stylesheet" href="../adminlte.css" />
 </head>
 <body class="layout-fixed bg-body-tertiary">
 
@@ -110,7 +110,7 @@ $user = mysqli_fetch_assoc($result);
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="adminlte.js"></script>
+<script src="../adminlte.js"></script>
 <script src="bookingForm.js"></script>
 </body>
 </html>
