@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result) {
         echo "Register berhasil";
-        header("Location: index.html");
+        header("Location: login.php");
         exit;
     } else {
         echo "Register gagal: " . mysqli_error($conn);

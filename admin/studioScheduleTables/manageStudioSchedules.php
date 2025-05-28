@@ -2,7 +2,7 @@
     session_start();
     include '../../connection.php';
     if ($_SESSION['role'] !== 'admin') {
-    header("Location: ../../index.html");
+    header("Location: ../../login.php");
     exit;
     }
     $query = "SELECT * FROM studio_schedules";
