@@ -68,8 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
           <!-- BEGIN: Form milikmu dengan dua input password -->
           <form
-            onsubmit="return validateForm()"
-            action="userRegister.php"
+            onsubmit="return validateForm()" 
             method="post"
           >
             <div class="input-group mb-3">

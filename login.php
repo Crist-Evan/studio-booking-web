@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <p class="login-box-msg">Login to continue</p>
 
           <!-- BEGIN: Your form with original name/id/action -->
-          <form action="loginProcess.php" method="post">
+          <form method="post">
             <div class="input-group mb-3">
               <input
                 type="text"
