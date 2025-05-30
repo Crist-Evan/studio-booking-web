@@ -14,6 +14,7 @@
         echo $_SESSION['message'];
         echo "<br><a href='../booking/bookingForm.php'>Booking Now!</a>";
         echo "<br><a href='userHistory.php'>Check Your History!</a>";
+        echo "<br><br><a href='../logout.php'>Logout!</a>";
     ?>
 </body>
 </html>

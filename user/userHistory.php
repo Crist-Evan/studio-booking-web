@@ -24,6 +24,11 @@
 </head>
 <body class="layout-fixed bg-body-tertiary">
   <div class="container mt-5">
+    <div class="mb-3">
+      <a href="userDashboard.php" class="btn btn-secondary">
+        <i class="bi bi-arrow-left-circle"></i> Kembali
+      </a>
+    </div>
     <div class="card">
       <div class="card-header bg-primary text-white">
         <h3 class="card-title">Booking History</h3>

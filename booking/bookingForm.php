@@ -36,10 +36,13 @@ $user = mysqli_fetch_assoc($result);
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
+      <div class="container-fluid d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Booking Form</h3>
+        <a href="../user/userDashboard.php" class="btn btn-secondary">
+          <i class="bi bi-arrow-left-circle"></i> Kembali
+        </a>
+      </div>
       <div class="card card-primary card-outline">
-        <div class="card-header">
-          <h3 class="card-title">Booking Form</h3>
-        </div>
 
         <form action="bookingProcess.php" method="POST">
           <div class="card-body">
