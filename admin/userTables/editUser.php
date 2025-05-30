@@ -203,7 +203,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body">
 
-                <form action="updateUser.php" method="POST">
+                <form method="POST">
                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
 
                     <div class="mb-3">

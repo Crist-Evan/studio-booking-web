@@ -204,7 +204,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body">
 
-                <form action="updateBooking.php" method="POST">
+                <form method="POST">
                     <input type="hidden" name="id" value="<?= $booking['id'] ?>">
 
                     <div class="mb-3">
