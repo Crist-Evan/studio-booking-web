@@ -45,6 +45,8 @@ $user = mysqli_fetch_assoc($result);
           <div class="card-body">
 
             <!-- Identitas Pengguna -->
+            <input type="hidden" name="user_id" value="<?= $user_id ?>">
+            
             <div class="mb-3">
               <label class="form-label">Name</label>
               <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" readonly>

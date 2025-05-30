@@ -208,7 +208,8 @@
 
                     $badge = match ($payment['status']) {
                         'paid' => 'success',
-                        'pending' => 'warning',
+                        'unpaid' => 'warning',
+                        'failed' => 'danger',
                         default => 'secondary'
                     };
                     echo "<tr>";
@@ -216,9 +217,9 @@
                     echo "<td>" . htmlspecialchars($user['name']) . "</td>";
                     echo "<td>" . htmlspecialchars($payment['id']) . "</td>";
                     echo "<td>Rp " . number_format($payment['amount'], 0, ',', '.') . "</td>";
-                    echo "<td>" . ($payment['method']) . "</td>";
+                    echo "<td>" . htmlspecialchars($payment['method']) . "</td>";
                     echo "<td><span class='badge text-bg-$badge'>" . htmlspecialchars($payment['status']) . "</span></td>";
-                    echo "<td>" . ($payment['paid_at']) . "</td>";
+                    echo "<td>" . htmlspecialchars($payment['paid_at']) . "</td>";
                     echo "<td>
                             <a href='editPayment.php?payment_id={$payment['id']}' class='btn btn-sm btn-warning'><i class='bi bi-pencil'></i></a>
                         </td>";
