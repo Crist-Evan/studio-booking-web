@@ -52,17 +52,17 @@ $user = mysqli_fetch_assoc($result);
             
             <div class="mb-3">
               <label class="form-label">Name</label>
-              <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" readonly>
+              <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" disabled>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
+              <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" name="phone" id="phone" value="<?= htmlspecialchars($user['number_phone']) ?>" readonly>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?= htmlspecialchars($user['number_phone']) ?>" disabled>
             </div>
 
             <!-- Studio -->
@@ -84,22 +84,23 @@ $user = mysqli_fetch_assoc($result);
               <input type="date" name="booking_date" id="booking_date" class="form-control" min="<?= date('Y-m-d') ?>" required>
             </div>
 
-            <div class="mb-3">
-              <label for="start_time" class="form-label">Start Time</label>
-              <select name="start_time" id="start_time" class="form-control" required></select>
-            </div>
-
-            <div class="mb-3">
-              <label for="end_time" class="form-label">End Time</label>
-              <select name="end_time" id="end_time" class="form-control" required></select>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="start_time" class="form-label">Start Booking</label>
+                <select name="start_time" id="start_time" class="form-control" required></select>
+              </div>
+              <div class="col-md-6">
+                <label for="end_time" class="form-label">End Booking</label>
+                <select name="end_time" id="end_time" class="form-control" required></select>
+              </div>
             </div>
 
             <!-- Result / Total -->
             <div class="mb-3">
               <label class="form-label">Total</label>
-              <input type="text" class="form-control" id="total" readonly placeholder="Result will appear here...">
-	            <input type="hidden" id="total_hidden" name="total">
+              <input type="text" class="form-control-plaintext form-control-lg fw-bold text-primary" id="total"placeholder="Rp -" disabled>
             </div>
+            <input type="hidden" id="total_hidden" name="total">
 
           </div>
           <div class="card-footer d-flex justify-content-between">
