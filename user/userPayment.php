@@ -1,20 +1,25 @@
 <?php
-include '../connection.php';
+  session_start();
+  include '../connection.php';
+  if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+  }
 
-$booking_id = $_GET['booking_id'] ?? null;
+  $booking_id = $_GET['booking_id'] ?? null;
 
-if (!$booking_id) {
-  echo "ID booking tidak ditemukan.";
-  exit;
-}
+  if (!$booking_id) {
+    echo "ID booking tidak ditemukan.";
+    exit;
+  }
 
-// Lanjutkan query pembayaran berdasarkan $booking_id
-$query = "SELECT * FROM payments WHERE booking_id = ?";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, 'i', $booking_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-$payment = mysqli_fetch_assoc($result);
+  // Lanjutkan query pembayaran berdasarkan $booking_id
+  $query = "SELECT * FROM payments WHERE booking_id = ?";
+  $stmt = mysqli_prepare($conn, $query);
+  mysqli_stmt_bind_param($stmt, 'i', $booking_id);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);
+  $payment = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>

@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
 
-    if ($userpass === $user['password'] or $user && password_verify($userpass, $user['password'])){
+    if ($user && password_verify($userpass, $user['password'])){
         // Simpan data ke session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['name'];

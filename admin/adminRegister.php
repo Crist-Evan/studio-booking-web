@@ -1,5 +1,5 @@
 <?php
-    include 'connection.php'; // file koneksi ke database
+    include '../connection.php'; // file koneksi ke database
 
     $username = 'admin';
     $useremail = 'admin@admin.com';
