@@ -1,6 +1,10 @@
 <?php
 session_start();
-include '../connection.php'; // pastikan ini koneksi ke database
+include '../connection.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
 $studio_query = "SELECT * FROM studios WHERE is_available = 1";
 $studio_result = mysqli_query($conn, $studio_query);

@@ -1,12 +1,17 @@
 <?php
-include '../connection.php';
+  session_start();
+  include '../connection.php';
+  if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+  }
 
-$booking_id = $_GET['booking_id'] ?? null;
+  $booking_id = $_GET['booking_id'] ?? null;
 
-if (!$booking_id) {
-  echo "ID booking tidak ditemukan.";
-  exit;
-}
+  if (!$booking_id) {
+    echo "ID booking tidak ditemukan.";
+    exit;
+  }
 
 // Ambil data pembayaran berdasarkan booking_id
 $query = "SELECT 
