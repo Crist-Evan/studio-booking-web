@@ -9,7 +9,24 @@ if (!$booking_id) {
 }
 
 // Ambil data pembayaran berdasarkan booking_id
-$query = "SELECT * FROM payments WHERE booking_id = ?";
+$query = "SELECT 
+          payments.id,
+          payments.amount,
+          payments.status,
+          payments.paid_at,
+          bookings.booking_date,
+          bookings.start_time,
+          bookings.end_time,
+          users.name AS user_name,
+          users.email AS user_email,
+          users.number_phone AS user_number,
+          studios.name AS studio_name
+          FROM payments
+          JOIN bookings ON payments.booking_id = bookings.id
+          JOIN users ON bookings.user_id = users.id
+          JOIN studios ON bookings.studio_id = studios.id
+          WHERE payments.booking_id = ?
+        ";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, 'i', $booking_id);
 mysqli_stmt_execute($stmt);
@@ -25,17 +42,24 @@ if (!$payment) {
 $status = $payment['status'];
 $badge = 'secondary';
 $statusText = 'Status Tidak Diketahui';
+$imgSrc;
 
 if ($status === 'unpaid') {
   $badge = 'warning';
   $statusText = 'Menunggu Pembayaran';
+  $imgSrc = '../assets/qris.jpg';
 } elseif ($status === 'paid') {
   $badge = 'success';
   $statusText = 'Pembayaran Berhasil';
+  $imgSrc = '../assets/success.gif';
 } elseif ($status === 'failed') {
   $badge = 'danger';
   $statusText = 'Pembayaran Gagal';
+  $imgSrc = '../assets/failed.gif';
 }
+
+$pesan = "Halo saya memiliki pesanan dengan id pesanan = {$payment['id']}";
+$whatsapp_url = "https://wa.me/6281313975003?text=" . urlencode($pesan);
 ?>
 
 <!DOCTYPE html>
@@ -60,25 +84,35 @@ if ($status === 'unpaid') {
 
             <!-- QRIS -->
             <div class="mb-4">
-              <img src="path/to/qris.png" alt="QRIS Payment" class="img-fluid rounded shadow" style="max-width: 280px;">
+              <img src="<?= $imgSrc ?>" alt="QRIS Payment" style="max-width: 280px;">
             </div>
 
             <!-- Info Pesanan -->
             <div class="text-start mb-4">
-              <p><strong>ID Pesanan:</strong> <?= $payment['id'] ?></p>
-              <p><strong>Total Bayar:</strong> Rp <?= number_format($payment['amount'], 0, ',', '.') ?></p>
-              <!-- Tambahkan info lain seperti nama studio, waktu booking, dsb jika di-join -->
+              <div class="row">
+                <p><strong>ID Pesanan:</strong> <?= $payment['id'] ?></p>
+                <div class="col-md-6">
+                  <p><strong>Total Bayar:</strong> Rp <?= number_format($payment['amount'], 0, ',', '.') ?></p>
+                  <p><strong>Nama Pemesan:</strong> <?= $payment['user_name'] ?></p>
+                  <p><strong>Nama Studio:</strong> <?= $payment['studio_name'] ?></p>
+                </div>
+                <div class="col-md-6">
+                  <p><strong>Tanggal Pesanan:</strong> <?= htmlspecialchars($payment['booking_date']) ?></p>
+                  <p><strong>Waktu Mulai Pesanan:</strong> <?= htmlspecialchars($payment['start_time']) ?></p>
+                  <p><strong>Waktu Akhir Pesanan:</strong> <?= htmlspecialchars($payment['end_time']) ?></p>
+                </div>
+              </div>
             </div>
 
             <!-- Tombol WhatsApp -->
-            <a href="https://wa.me/6281313975003?text=Halo%20saya%20ingin%20booking%20studio%20musik" class="btn btn-success btn-lg mb-3" target="_blank">
+            <a  href="<?= $whatsapp_url ?>" class="btn btn-success btn-lg mb-3" target="_blank">
               <i class="bi bi-whatsapp me-1"></i> Hubungi via WhatsApp
             </a>
 
             <!-- Tombol Kembali -->
             <div>
               <a href="userHistory.php" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left"></i> Keluar
+                <i class="bi bi-arrow-left"></i> Kembali
               </a>
             </div>
           </div>
