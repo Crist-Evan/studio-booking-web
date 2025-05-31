@@ -227,7 +227,7 @@
 
                     <div class="mb-3">
                     <label for="paid_at" class="form-label">Tanggal Pembayaran</label>
-                    <input type="datetime" class="form-control" name="paid_at" id="paid_at" value="<?= $payment['paid_at'] ?>" required>
+                    <input type="datetime-local" class="form-control" name="paid_at" id="paid_at" value="<?= $payment['paid_at'] ?>" required>
                     </div>
 
                     <div class="mb-3">
