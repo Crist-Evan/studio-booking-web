@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    include 'connection.php';
+    if (!isset($_SESSION['user_id'])) {
+        $userLogin = FALSE;
+    } else {
+        $userLogin = TRUE;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -112,7 +122,25 @@
                     <li class="nav-item"><a class="nav-link" href="#harga">Harga</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pesan">Pesan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <!-- before login -->
+                    <?php if(!$userLogin): ?>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <!-- after login -->
+                    <?php else: ?>
+                    <li class="nav-item dropdown">
+                        <button class="btn nav-link dropdown-toggle" style="border: none;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i>Akun
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="user/userProfile.php">Profile</a></li>
+                            <li><a class="dropdown-item" href="booking/bookingForm.php">Booking</a></li>
+                            <li><a class="dropdown-item" href="user/userHistory.php">History</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
                 </ul>
+                
             </div>
         </div>
     </nav>
