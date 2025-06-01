@@ -68,7 +68,7 @@
     <div class="content-wrapper p-4">
         <div class="container">
             <div class="mb-3">
-                <a href="userDashboard.php" class="btn btn-secondary">
+                <a href="../index.php" class="btn btn-secondary">
                     <i class="bi bi-arrow-left-circle"></i> Kembali
                 </a>
             </div>

@@ -30,7 +30,7 @@
 <body class="layout-fixed bg-body-tertiary">
   <div class="container mt-5">
     <div class="mb-3">
-      <a href="userDashboard.php" class="btn btn-secondary">
+      <a href="../index.php" class="btn btn-secondary">
         <i class="bi bi-arrow-left-circle"></i> Kembali
       </a>
     </div>

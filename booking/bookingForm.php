@@ -42,7 +42,7 @@ $user = mysqli_fetch_assoc($result);
     <div class="col-md-8">
       <div class="container-fluid d-flex justify-content-between align-items-center mb-3">
         <h3 class="mb-0">Booking Form</h3>
-        <a href="../user/userDashboard.php" class="btn btn-secondary">
+        <a href="../user/../index.php" class="btn btn-secondary">
           <i class="bi bi-arrow-left-circle"></i> Kembali
         </a>
       </div>
