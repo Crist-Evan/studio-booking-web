@@ -151,7 +151,7 @@
         <div class="container">
             <h1 class="display-4" data-aos="fade-up">Selamat Datang di Tekkom Studio</h1>
             <p class="lead" data-aos="fade-up" data-aos-delay="100">Studio musik terbaik untuk latihan dan produksi Anda</p>
-            <a href="#" class="btn btn-orange btn-lg mt-3" data-aos="zoom-in" data-aos-delay="200">Pesan Sekarang!</a>
+            <a href="booking/bookingForm.php" class="btn btn-orange btn-lg mt-3" data-aos="zoom-in" data-aos-delay="200">Pesan Sekarang!</a>
         </div>
     </section>
 
@@ -213,7 +213,7 @@
                         <h5 class="mb-3">Studio Reguler</h5>
                         <h3 class="text-warning">Rp 50.000/jam</h3>
                         <p>Untuk latihan band atau individu</p>
-                        <a href="#" class="btn btn-orange mt-3">
+                        <a href="booking/bookingForm.php" class="btn btn-orange mt-3">
                             Pesan Sekarang!
                         </a>
                     </div>
@@ -223,7 +223,7 @@
                         <h5 class="mb-3">Studio Premium</h5>
                         <h3 class="text-info">Rp 100.000/jam</h3>
                         <p>Fasilitas lengkap + rekaman</p>
-                        <a href="#" class="btn btn-orange mt-3">
+                        <a href="booking/bookingForm.php" class="btn btn-orange mt-3">
                             Pesan Sekarang!
                         </a>
                     </div>
@@ -233,7 +233,7 @@
                         <h5 class="mb-3">Studio VIP</h5>
                         <h3 class="text-success">Rp 150.000/jam</h3>
                         <p>Cocok untuk produksi intensif</p>
-                        <a href="#" class="btn btn-orange mt-3">
+                        <a href="booking/bookingForm.php" class="btn btn-orange mt-3">
                             Pesan Sekarang!
                         </a>
                     </div>
@@ -265,7 +265,7 @@
         <div class="container text-center" data-aos="fade-up">
             <h2 class="mb-4">Tunggu Apalagi?</h2>
             <p>Pilih studio-mu Sekarang!</p>
-            <a href="#" class="btn btn-orange mt-3 col-md-4">
+            <a href="booking/bookingForm.php" class="btn btn-orange mt-3 col-md-4">
                 Pesan
             </a>
         </div>
