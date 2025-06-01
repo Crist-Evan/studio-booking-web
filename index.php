@@ -86,12 +86,17 @@
         .gallery-img:hover {
             transform: scale(1.05);
         }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="assets/logo.png" alt="Logo" width="40" height="40" class="me-2" />
@@ -174,11 +179,11 @@
     <!-- Harga -->
     <section id="harga" class="py-5 bg-dark text-white">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Harga Paket Studio</h2>
+            <h2 class="text-center mb-5" data-aos="fade-up">Harga Sewa Studio</h2>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="zoom-in">
                     <div class="card text-center p-4 h-100">
-                        <h5 class="mb-3">Paket Reguler</h5>
+                        <h5 class="mb-3">Studio Reguler</h5>
                         <h3 class="text-warning">Rp 50.000/jam</h3>
                         <p>Untuk latihan band atau individu</p>
                         <button class="btn btn-orange mt-3">Pesan Sekarang</button>
@@ -186,16 +191,16 @@
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card text-center p-4 h-100">
-                        <h5 class="mb-3">Paket Premium</h5>
-                        <h3 class="text-info">Rp 150.000/3 jam</h3>
+                        <h5 class="mb-3">Studio Premium</h5>
+                        <h3 class="text-info">Rp 100.000/jam</h3>
                         <p>Fasilitas lengkap + rekaman</p>
                         <button class="btn btn-orange mt-3">Pesan Sekarang</button>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="card text-center p-4 h-100">
-                        <h5 class="mb-3">Paket Harian</h5>
-                        <h3 class="text-success">Rp 350.000/hari</h3>
+                        <h5 class="mb-3">Studio VIP</h5>
+                        <h3 class="text-success">Rp 150.000/jam</h3>
                         <p>Cocok untuk produksi intensif</p>
                         <button class="btn btn-orange mt-3">Pesan Sekarang</button>
                     </div>
@@ -258,26 +263,16 @@
     </section>
 
     <!-- Kontak -->
-    <section id="kontak" class="py-5 bg-black">
+    <section id="kontak" class="py-5 text-white">
         <div class="container text-center" data-aos="fade-up">
-            <h2>Kontak Kami</h2>
-            <p class="mb-3">Hubungi kami untuk informasi lebih lanjut atau jadwal studio:</p>
-            <form class="row g-3 justify-content-center mb-4">
-                <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Nama Anda" required>
-                </div>
-                <div class="col-md-6">
-                    <input type="email" class="form-control" placeholder="Email" required>
-                </div>
-                <div class="col-12">
-                    <textarea class="form-control" rows="4" placeholder="Pesan atau pertanyaan Anda..." required></textarea>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-orange">Kirim Pesan</button>
-                </div>
-            </form>
-            <p><i class="bi bi-whatsapp"></i> 0812-3456-7890</p>
-            <p><i class="bi bi-envelope"></i> tekkomstudio@email.com</p>
+            <h2 class="mb-4">Hubungi Kami</h2>
+            <p>Untuk pertanyaan lebih lanjut, hubungi kami melalui:</p>
+            <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-orange mt-3">
+                <i class="bi bi-whatsapp me-2"></i>Chat via WhatsApp
+            </a>
+            <a href="mailto:tekkomstudio@email.com" class="btn btn-outline-light mt-3 ms-2">
+                <i class="bi bi-envelope-fill me-2"></i>Kirim Email
+            </a>
         </div>
     </section>
 
@@ -292,7 +287,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-3 bg-dark text-white">
+    <footer class="text-center py-4 bg-dark text-white">
         <p>© 2025 Tekkom Studio. All rights reserved.</p>
     </footer>
 
