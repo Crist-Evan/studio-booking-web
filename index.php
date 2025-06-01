@@ -110,8 +110,7 @@
                     <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Layanan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#harga">Harga</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pesan">Pesan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                 </ul>
             </div>
@@ -124,7 +123,7 @@
         <div class="container">
             <h1 class="display-4" data-aos="fade-up">Selamat Datang di Tekkom Studio</h1>
             <p class="lead" data-aos="fade-up" data-aos-delay="100">Studio musik terbaik untuk latihan dan produksi Anda</p>
-            <a href="#kontak" class="btn btn-orange btn-lg mt-3" data-aos="zoom-in" data-aos-delay="200">Hubungi Kami</a>
+            <a href="#" class="btn btn-orange btn-lg mt-3" data-aos="zoom-in" data-aos-delay="200">Pesan Sekarang!</a>
         </div>
     </section>
 
@@ -186,7 +185,9 @@
                         <h5 class="mb-3">Studio Reguler</h5>
                         <h3 class="text-warning">Rp 50.000/jam</h3>
                         <p>Untuk latihan band atau individu</p>
-                        <button class="btn btn-orange mt-3">Pesan Sekarang</button>
+                        <a href="#" class="btn btn-orange mt-3">
+                            Pesan Sekarang!
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
@@ -194,7 +195,9 @@
                         <h5 class="mb-3">Studio Premium</h5>
                         <h3 class="text-info">Rp 100.000/jam</h3>
                         <p>Fasilitas lengkap + rekaman</p>
-                        <button class="btn btn-orange mt-3">Pesan Sekarang</button>
+                        <a href="#" class="btn btn-orange mt-3">
+                            Pesan Sekarang!
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
@@ -202,7 +205,9 @@
                         <h5 class="mb-3">Studio VIP</h5>
                         <h3 class="text-success">Rp 150.000/jam</h3>
                         <p>Cocok untuk produksi intensif</p>
-                        <button class="btn btn-orange mt-3">Pesan Sekarang</button>
+                        <a href="#" class="btn btn-orange mt-3">
+                            Pesan Sekarang!
+                        </a>
                     </div>
                 </div>
             </div>
@@ -227,10 +232,21 @@
         </div>
     </section>
 
+    <!-- Pesan -->
+    <section id="pesan" class="py-5 bg-black text-white">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="mb-4">Tunggu Apalagi?</h2>
+            <p>Pilih studio-mu Sekarang!</p>
+            <a href="#" class="btn btn-orange mt-3 col-md-4">
+                Pesan
+            </a>
+        </div>
+    </section>
+
     <!-- Testimoni Carousel -->
     <section id="testimoni" class="py-5 bg-black text-white">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Apa Kata Mereka</h2>
+            <h2 class="text-center mb-5" data-aos="fade-up">Apa Kata Mereka?</h2>
             <div id="carouselTestimoni" class="carousel slide" data-bs-ride="carousel" data-aos="zoom-in">
                 <div class="carousel-inner">
                     <div class="carousel-item active text-center">
