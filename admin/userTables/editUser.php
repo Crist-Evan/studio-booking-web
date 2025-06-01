@@ -35,7 +35,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Fixed Sidebar</title>
+    <title>Admin Dashboard | User Management</title>
     <!--begin::Fonts-->
     <link
       rel="stylesheet"
@@ -122,13 +122,13 @@
           <a href="../adminDashboard.php" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="../../../dist/assets/img/AdminLTELogo.png"
+              src="../../assets/logo.png"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
+            <span class="brand-text fw-light">Admin Dashboard</span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
