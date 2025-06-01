@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Register | My App</title>
+    <title>Tekkom Studio | Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fonts -->
@@ -59,12 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <body class="register-page bg-body-secondary">
     <div class="register-box">
       <div class="register-logo">
-        <a href="#"><b>My</b>App</a>
+        <a href="#"><b>Tekkom</b> Studio</a>
       </div>
 
       <div class="card">
         <div class="card-body register-card-body">
-          <p class="register-box-msg">Register a new membership</p>
+          <p class="register-box-msg">Register a new user</p>
 
           <!-- BEGIN: Form milikmu dengan dua input password -->
           <form

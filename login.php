@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Login | My App</title>
+    <title>Tekkom Studio | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fonts -->
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <body class="login-page bg-body-secondary">
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b>My</b>App</a>
+        <a href="#"><b>Tekkom</b> Studio</a>
       </div>
 
       <div class="card">
