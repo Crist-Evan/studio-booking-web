@@ -48,9 +48,9 @@ CREATE TABLE `payments` (
   `id` int NOT NULL,
   `booking_id` int NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `method` varchar(50) DEFAULT NULL,
+  `method` VARCHAR(50) NOT NULL DEFAULT '-',
   `status` enum('unpaid','paid','failed') DEFAULT 'unpaid',
-  `paid_at` timestamp NULL DEFAULT NULL
+  `paid_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
