@@ -85,7 +85,7 @@ $user = mysqli_fetch_assoc($result);
             <!-- Tanggal & Waktu -->
             <div class="mb-3">
               <label for="booking_date" class="form-label">Booking Date</label>
-              <input type="date" name="booking_date" id="booking_date" class="form-control" min="<?= date('Y-m-d') ?>" required>
+              <input type="date" name="booking_date" id="booking_date" class="form-control" min="<?= date('Y-m-d', strtotime('+1 day')) ?>" required>
             </div>
 
             <div class="row mb-3">
