@@ -5,7 +5,7 @@
     header("Location: ../../login.php");
     exit;
     }
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users WHERE role = 'client'";
     $result = mysqli_query($conn, $query);
 ?>
 

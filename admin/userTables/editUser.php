@@ -9,9 +9,9 @@
     $user_id = $_GET['user_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $newUsername = $_POST['username'];
-        $newUseremail = $_POST['useremail'];
-        $newUserphonenumber = $_POST['userphonenumber'];
+        $newUsername = $_POST['name'];
+        $newUseremail = $_POST['email'];
+        $newUserphonenumber = $_POST['number_phone'];
 
         $query = "UPDATE users SET name = ?, email = ?, number_phone = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $query);
@@ -219,14 +219,6 @@
                     <div class="mb-3">
                     <label for="number_phone" class="form-label">Nomor HP</label>
                     <input type="text" class="form-control" name="number_phone" id="number_phone" value="<?= htmlspecialchars($user['number_phone']) ?>" required>
-                    </div>
-
-                    <div class="mb-3">
-                    <label for="role" class="form-label">Peran</label>
-                    <select name="role" id="role" class="form-select" required>
-                        <option value="client" <?= $user['role'] === 'client' ? 'selected' : '' ?>>Client</option>
-                        <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
-                    </select>
                     </div>
 
                     <div class="d-flex justify-content-end">
