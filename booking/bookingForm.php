@@ -58,7 +58,7 @@ $user = mysqli_fetch_assoc($result);
 
       <!-- TIME -->
       <label for="booking_date">Tanggal Booking:</label>
-      <input type="date" id="booking_date" name="booking_date" min="<?= date('Y-m-d') ?>" required><br><br>
+      <input type="date" id="booking_date" name="booking_date" min="<?= date('Y-m-d', strtotime('+1 day')) ?>" required><br><br>
 
       <label>Jam Mulai:</label>
       <select name="start_time" id="start_time">
