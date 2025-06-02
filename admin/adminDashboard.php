@@ -15,7 +15,7 @@
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
   $paymentcount = $row['total'];
-  $formatted_paymentcount = number_format($paymentcount, 0, ',', '.');
+  $formatted_paymentcount = number_format($paymentcount ?? 0, 0, ',', '.');
 
   $query = "SELECT COUNT(id) AS total FROM users WHERE role = 'client'";
   $result = mysqli_query($conn, $query);
