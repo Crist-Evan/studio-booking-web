@@ -13,8 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
 
-    if ($user && password_verify($userpass, $user['password'])){
-        // Simpan data ke session
+    if ($user && password_verify($userpass, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['name'];
         $_SESSION['useremail'] = $user['email'];
@@ -30,112 +29,82 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
     } else {
-        echo "Email atau password salah!";
-        echo "<br>Name: $username<br>";
-        echo "Password: $userpass<br>";
-
+        $error_message = "Email atau password salah!";
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tekkom Studio | Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Tekkom Studio | Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
 
-    <!-- Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      crossorigin="anonymous"
-    />
+<body style="background-color:rgb(50, 43, 28);" >
 
-    <!-- Plugin CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-      crossorigin="anonymous"
-    />
-
-    <!-- AdminLTE CSS -->
-    <link rel="stylesheet" href="adminlte.css" />
-  </head>
-  <body class="login-page bg-body-secondary">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Tekkom</b> Studio</a>
-      </div>
-
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg">Login to continue</p>
-
-          <!-- BEGIN: Your form with original name/id/action -->
-          <form method="post">
-            <div class="input-group mb-3">
-              <input
-                type="text"
-                name="username"
-                id="username"
-                class="form-control"
-                placeholder="Username"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-person-fill"></span>
-              </div>
+<section class="min-vh-100 d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-5 d-none d-md-block">
+              <img src="assets/2.jpeg" alt="login form" class="img-fluid" style="height: 100%; object-fit: cover; border-radius: 1rem 0 0 1rem;" />
             </div>
-            <div class="input-group mb-3">
-              <input
-                type="password"
-                name="userpass"
-                id="userpass"
-                class="form-control"
-                placeholder="Password"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-lock-fill"></span>
-              </div>
+            <div class="col-md-7 d-flex align-items-center">
+              <div class="card-body px-4 py-3 text-black w-100">
+
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <img src="assets/logo.png" alt="Logo" style="height: 50px; margin-right: 0.2rem;">
+                <span class="h4 fw-bold mb-0">Tekkom Studio</span>
             </div>
 
-            <div class="row">
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block w-100">
-                  Login
-                </button>
+                <p class="mb-3" style="letter-spacing: 0.5px;">Login to continue</p>
+
+                <?php if (!empty($error_message)): ?>
+                  <div class="alert alert-danger py-2" role="alert" style="font-size: 0.9rem;">
+                    <?= $error_message ?>
+                  </div>
+                <?php endif; ?>
+
+                <form method="POST" action="">
+                  <div class="mb-3">
+                    <label for="username" style="font-size: 0.9rem; color: #555; margin-bottom: 0.2rem; display: block;">Username</label>
+                    <input type="text" id="username" name="username" required
+                      style="border-radius: 0.3rem; border: 1px solid #ccc; font-size: 0.9rem; width: 100%; padding: 0.375rem 0.75rem;" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="userpass" style="font-size: 0.9rem; color: #555; margin-bottom: 0.2rem; display: block;">Password</label>
+                    <input type="password" id="userpass" name="userpass" required
+                      style="border-radius: 0.3rem; border: 1px solid #ccc; font-size: 0.9rem; width: 100%; padding: 0.375rem 0.75rem;" />
+                  </div>
+
+                  <div class="mb-3">
+                    <button class="btn btn-dark btn-sm w-100" type="submit" style="border-radius: 0.3rem;">Login</button>
+                  </div>
+
+                  <div class="text-center">
+                    <span class="small">Don't have an account? 
+                      <a href="register.php">Register</a>
+                    </span><br>
+                  </div>
+                </form>
+
               </div>
             </div>
-          </form>
-          <!-- END: Your form -->
-
-          <p class="mb-0 mt-3">
-            <a href="register.php" class="text-center">Register Here!</a>
-          </p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="adminlte.js"></script>
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.js"></script>
+</body>
 </html>

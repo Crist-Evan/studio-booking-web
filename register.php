@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        echo "Register berhasil";
         header("Location: login.php");
         exit;
     } else {
@@ -29,159 +28,82 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tekkom Studio | Register</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Tekkom Studio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet"/>
+</head>
+<body style="background-color:rgb(50, 43, 28);">
 
-    <!-- Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      crossorigin="anonymous"
-    />
 
-    <!-- Plugin CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-      crossorigin="anonymous"
-    />
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow-5-strong" style="border-radius: 20px; overflow: hidden;">
+          <div class="row g-0 h-100">
 
-    <!-- AdminLTE CSS -->
-    <link rel="stylesheet" href="adminlte.css" />
-  </head>
-  <body class="register-page bg-body-secondary">
-    <div class="register-box">
-      <div class="register-logo">
-        <a href="#"><b>Tekkom</b> Studio</a>
-      </div>
+            <!-- Gambar Kiri -->
+            <div class="col-md-6 d-none d-md-block">
+              <img src="assets/1.jpg" 
+                   alt="studio" 
+                   style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
 
-      <div class="card">
-        <div class="card-body register-card-body">
-          <p class="register-box-msg">Register a new user</p>
+            <!-- Form Kanan -->
+            <div class="col-md-6 p-5 d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="fw-bold mb-3 d-flex align-items-center" style="margin-top: -20px;">
+                  <img src="assets/logo.png" alt="Logo" style="height: 60px; margin-right: 0.5rem;">
+                  Tekkom Studio
+                </h3>
 
-          <!-- BEGIN: Form milikmu dengan dua input password -->
-          <form
-            onsubmit="return validateForm()" 
-            method="post"
-          >
-            <div class="input-group mb-3">
-              <input
-                type="text"
-                name="username"
-                id="username"
-                class="form-control"
-                placeholder="Full Name"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-person"></span>
+                <p class="mb-4">Register a new user</p>
+
+                <form action="register.php" method="POST">
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <input type="text" id="fullname" name="username" class="form-control form-control-lg" required />
+                    <label class="form-label" for="fullname">Username</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <input type="email" id="email" name="useremail" class="form-control form-control-lg" required />
+                    <label class="form-label" for="email">Email</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <input type="text" id="phone" name="userphonenumber" class="form-control form-control-lg" required />
+                    <label class="form-label" for="phone">Phone Number</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <input type="password" id="password" name="userpass" class="form-control form-control-lg" required />
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" required />
+                    <label class="form-label" for="confirm_password">Confirm Password</label>
+                  </div>
+
+                  <button type="submit" class="btn btn-dark btn-block mb-3">Register</button>
+                </form>
+              </div>
+
+              <div class="text-center">
+                <p class="mb-0">Already have an account? <a href="login.php">Login</a></p>
               </div>
             </div>
 
-            <div class="input-group mb-3">
-              <input
-                type="email"
-                name="useremail"
-                id="useremail"
-                class="form-control"
-                placeholder="Email"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-envelope"></span>
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                type="tel"
-                name="userphonenumber"
-                id="userphonenumber"
-                class="form-control"
-                placeholder="Phone Number"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-telephone"></span>
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                type="password"
-                name="userpass"
-                id="userpass"
-                class="form-control"
-                placeholder="Password"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-lock-fill"></span>
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                type="password"
-                name="confirm_pass"
-                id="confirm_pass"
-                class="form-control"
-                placeholder="Confirm Password"
-                required
-              />
-              <div class="input-group-text">
-                <span class="bi bi-lock"></span>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block w-100">
-                  Register
-                </button>
-              </div>
-            </div>
-          </form>
-          <!-- END: Form -->
-
-          <p class="mb-0 mt-3">
-            <a href="login.php" class="text-center">Login Here!</a>
-          </p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="adminlte.js"></script>
-    <script>
-      function validateForm() {
-        const pwd = document.getElementById("userpass").value;
-        const conf = document.getElementById("confirm_pass").value;
-        if (pwd !== conf) {
-          alert("Password tidak sama!");
-          return false; // Form tidak dikirim
-        }
-        return true;
-      }
-    </script>
-  </body>
+  <!-- FontAwesome untuk icon musik -->
+  <script src="https://kit.fontawesome.com/a2e0b5b217.js" crossorigin="anonymous"></script>
+  <!-- MDB -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+</body>
 </html>
