@@ -89,10 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <button class="btn btn-dark btn-sm w-100" type="submit" style="border-radius: 0.3rem;">Login</button>
                   </div>
 
-                  <div class="text-center">
-                    <span class="small">Don't have an account? 
-                      <a href="register.php">Register</a>
-                    </span><br>
+                  <div class="d-flex justify-content-between">
+                    <span class="small">
+                      Don't have an account? <a href="register.php">Register</a>
+                    </span>
+                    <span class="small">
+                      Forgot Password? <a href="forgotPassword.php">Here</a>
+                    </span>
                   </div>
                 </form>
 
