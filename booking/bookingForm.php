@@ -34,6 +34,11 @@ $user = mysqli_fetch_assoc($result);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="../adminlte.css" />
+
+  <!-- midtrans js head -->
+  <script type="text/javascript"
+    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-ya17coaL3qp3W8J0"></script>
 </head>
 <body class="layout-fixed bg-body-tertiary">
 
@@ -48,7 +53,7 @@ $user = mysqli_fetch_assoc($result);
       </div>
       <div class="card card-primary card-outline">
 
-        <form action="bookingProcess.php" method="POST">
+        <form action="" method="POST" id="booking-form">
           <div class="card-body">
 
             <!-- Identitas Pengguna -->
@@ -56,17 +61,17 @@ $user = mysqli_fetch_assoc($result);
             
             <div class="mb-3">
               <label class="form-label">Name</label>
-              <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" disabled>
+              <input type="text" class="form-control" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" readonly>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
+              <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" name="phone" id="phone" value="<?= htmlspecialchars($user['number_phone']) ?>" disabled>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?= htmlspecialchars($user['number_phone']) ?>" readonly>
             </div>
 
             <!-- Studio -->
@@ -108,7 +113,7 @@ $user = mysqli_fetch_assoc($result);
 
           </div>
           <div class="card-footer d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Book Now</button>
+            <button type="submit" id="btn_booking" class="btn btn-primary">Book Now</button>
           </div>
         </form>
       </div>

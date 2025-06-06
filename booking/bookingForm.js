@@ -6,6 +6,8 @@ const startTimeSelect = document.getElementById("start_time");
 const endTimeSelect = document.getElementById("end_time");
 const totalInput = document.getElementById("total"); // untuk tampilkan total
 const totalHidden = document.getElementById("total_hidden"); // jika ingin kirim ke backend
+const bookingButton = document.getElementById("btn_booking");
+const form = document.getElementById("booking-form");
 
 const dayMap = [
   "Sunday",
@@ -171,3 +173,18 @@ function hitungTotal() {
     }
   }
 }
+
+bookingButton.addEventListener("click", async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  try {
+    const response = await fetch(`placeOrder.php`, {
+      method: "POST",
+      body: formData,
+    });
+    const token = await response.text();
+    window.snap.pay(token);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
