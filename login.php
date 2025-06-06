@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
     } else {
-        $error_message = "Email atau password salah!";
+        $error_message = "Username atau Password Salah!";
     }
 }
 ?>
