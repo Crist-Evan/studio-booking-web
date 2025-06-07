@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body style="background-color:rgb(50, 43, 28);">
 
-
+<section class="min-vh-100 d-flex align-items-center">
   <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -100,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     </div>
   </div>
+</section>
 
   <!-- FontAwesome untuk icon musik -->
   <script src="https://kit.fontawesome.com/a2e0b5b217.js" crossorigin="anonymous"></script>
