@@ -94,12 +94,12 @@
 
                     <div data-mdb-input-init class="form-outline mb-3">
                         <input type="password" name="new_pass" id="new_pass" class="form-control form-control-lg" required>
-                        <label class="form-label" for="new_pass">Password Baru:</label>
+                        <label class="form-label" for="new_pass">Password Baru</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-3">
                         <input type="password" name="confirm_pass" id="confirm_pass" class="form-control form-control-lg" required>
-                        <label class="form-label" for="confirm_pass">Konfirmasi Password:</label>
+                        <label class="form-label" for="confirm_pass">Konfirmasi Password</label>
                     </div>
 
                     <button type="submit" class="btn btn-dark btn-block mb-3">Reset Password</button>
