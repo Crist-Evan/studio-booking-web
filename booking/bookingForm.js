@@ -6,6 +6,8 @@ const startTimeSelect = document.getElementById("start_time");
 const endTimeSelect = document.getElementById("end_time");
 const totalInput = document.getElementById("total"); // untuk tampilkan total
 const totalHidden = document.getElementById("total_hidden"); // jika ingin kirim ke backend
+const locationInput = document.getElementById("studio_loc");
+const descriptionInput = document.getElementById("studio_desc");
 
 const dayMap = [
   "Sunday",
@@ -29,9 +31,16 @@ studioSelect.addEventListener("change", async function () {
   totalInput.value = "";
   if (totalHidden) totalHidden.value = "";
 
+  // Ambil lokasi & deskripsi
+  const res = await fetch(`getStudioInfo.php?studio_id=${studioId}`);
+  const data = await res.json();
+
+  locationInput.value = data.location || "—";
+  descriptionInput.value = data.description || "—";
+
   // Ambil data jadwal studio
-  const res = await fetch(`getStudioSchedule.php?studio_id=${studioId}`);
-  studioSchedule = await res.json();
+  const res2 = await fetch(`getStudioSchedule.php?studio_id=${studioId}`);
+  studioSchedule = await res2.json();
 
   // Dapatkan hari buka dari data
   const allowedDays = Object.keys(studioSchedule).map((day) =>

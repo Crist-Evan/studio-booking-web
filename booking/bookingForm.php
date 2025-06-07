@@ -82,6 +82,17 @@ $user = mysqli_fetch_assoc($result);
               </select>
             </div>
 
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="studio_loc" class="form-label">Location</label>
+                <textarea name="studio_loc" id="studio_loc" class="form-control" disabled></textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="studio_desc" class="form-label">Description</label>
+                <textarea name="studio_desc" id="studio_desc" class="form-control" disabled></textarea>
+              </div>
+            </div>
+
             <!-- Tanggal & Waktu -->
             <div class="mb-3">
               <label for="booking_date" class="form-label">Booking Date</label>
