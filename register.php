@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <p class="mb-4">Register a new user</p>
 
-                <form action="register.php" method="POST">
+                <form action="register.php" method="POST" onsubmit="return validateForm()">
                   <div data-mdb-input-init class="form-outline mb-3">
                     <input type="text" id="fullname" name="username" class="form-control form-control-lg" required />
                     <label class="form-label" for="fullname">Username</label>
@@ -105,5 +105,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <script src="https://kit.fontawesome.com/a2e0b5b217.js" crossorigin="anonymous"></script>
   <!-- MDB -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+  <!-- Js -->
+  <script>
+      function validateForm() {
+        const pwd = document.getElementById("password").value;
+        const conf = document.getElementById("confirm_password").value;
+        if (pwd !== conf) {
+          alert("Password tidak sama!");
+          return false; // Form tidak dikirim
+        }
+        return true;
+      }
+    </script>
 </body>
 </html>
