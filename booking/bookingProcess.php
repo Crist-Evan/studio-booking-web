@@ -24,7 +24,7 @@ if ($booking_success) {
     $payment_success = mysqli_stmt_execute($stmt2);
 
     if ($payment_success) {
-        echo "✅ Berhasil! Data booking & pembayaran ditambahkan ke database!";
+        // echo "✅ Berhasil! Data booking & pembayaran ditambahkan ke database!";
         header("Location: ../user/userPayment.php?booking_id=$booking_id");
         exit;
     } else {
